@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    kubernetes.io/ingress.class: nginx
+  name: gradle
+  namespace: gradle
+spec:
+  rules:
+  - host: gradle.factory.digi-leap.net
+    http:
+      paths:
+      - backend:
+          serviceName: gradle-proxy
+          servicePort: 80
